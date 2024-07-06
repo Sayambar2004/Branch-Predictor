@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Upgrade Predictor</title>
+</head>
+<body>
+    <h1>Branch Upgrade Predictor</h1>
+    <form action="/predict" method="POST">
+        <label for="ygpa">Enter your YGPA:</label>
+        <input type="text" id="ygpa" name="ygpa" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if ygpa %}
+        <div>
+            <h2>Results for YGPA: {{ ygpa }}</h2>
+            {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+            {% else %}
+                <p>Best Branch: {{ best_branch }}</p>
+                <p>Probability: {{ best_probability }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</body>
+</html>
